@@ -1,13 +1,22 @@
 'use strict';
 
+import 'babel-polyfill';
 import { assert } from 'chai';
 
-import { name } from './main';
+import { name, getRepos } from './main';
 
-describe('Example test', () => {
+describe('App', () => {
 
-    it('should contain a name', () => {
+    it('should contain default name', () => {
         assert.strictEqual(name, 'tomastrajan', 'correct name');
+    });
+
+    it('should get repositories of a specified user', () => {
+        return getRepos()
+            .then(repos => {
+                assert.isDefined(repos, 'no repos found');
+                assert.strictEqual(repos[1].name, 'angular-es6-webpack', 'invalid repo name');
+            });
     });
 
 });
