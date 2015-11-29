@@ -4,10 +4,12 @@
   "description": "Mochify example",
   "main": "src/main.js",
   "scripts": {
-    "start": "live-server --open=/build & watchify -d -t [ babelify [ es2015 ] ] src/main.js -o build/bundle.js",
-    "test": "mochify --transform [ babelify [ es2015 ] ] --timeout 5000 --reporter spec src/**/*.test.js",
-    "watch": "mochify --transform [ babelify [ es2015 ] ] --timeout 5000 --reporter spec --watch src/**/*.test.js",
-    "build": "browserify -d -t [ babelify [ es2015 ] ] src/main.js -o build/bundle.js"
+    "server": "live-server --open=/build",
+    "watchify": "watchify -d -t [ babelify [ es2015 ] ] src/main.js -o build/bundle.js",
+    "mochify": "mochify --transform [ babelify [ es2015 ] ] --timeout 5000 --reporter spec --watch src/**/*.test.js",
+    "start": "npm run server & npm run watchify & npm run mochify",
+    "test":  "mochify --transform [ babelify [ es2015 ] ] --timeout 5000 --reporter spec src/**/*.test.js",
+    "ci": "npm run test && browserify -d -t [ babelify [ es2015 ] ] src/main.js -o build/bundle.js"
   },
   "repository": {
     "type": "git",
