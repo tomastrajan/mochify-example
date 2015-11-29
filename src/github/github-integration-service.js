@@ -16,5 +16,5 @@ export function getRepos(name) {
 }
 
 function dtoToModel(dto) {
-    return _.pick(dto, ['name', 'description', 'url']);
+    return _.pick(dto, ['name', 'description', 'html_url']);
 }
