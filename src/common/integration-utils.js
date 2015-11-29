@@ -2,6 +2,10 @@
 
 let debug = false;
 
+export function setDebug(d) {
+    debug = d;
+}
+
 export function unwrapResponse(response) {
     return response.data;
 }
@@ -14,5 +18,5 @@ export function logResponse(response) {
 }
 
 export function logRejection(rejection) {
-    console.log(rejection);
+    console.error(rejection);
 }
